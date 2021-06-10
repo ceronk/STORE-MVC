@@ -2,18 +2,15 @@
 #Utilizando modulo rewrite para simplificar urls
 
 <IfModule mod_rewrite.c>
-
-#Activar rewrite
+# Activar rewrite
 RewriteEngine on
-
 #definiendo URL para mostrar error 404 (con controlador)
 ErrorDocument 404 http://localhost/UDEMY/STORE-MVC/error/index
-
+ 
 #Comprobar que las URL no las muestre si es un directorio o un fichero 
 RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond ${SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-f
 
 #Reglas de reescritura 
-RewriteRule ^/?([a-zA-Z]+)/([a-zA-Z]+) index.php?controller=$1&action=$2
-
+RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
 </IfModule>

@@ -2,7 +2,7 @@
 
 //definicion de parametros (limpiando urls para hacerlas "amigables")
 
-define("base_url", "http://localhost/Practicas/UDEMY/php+qsl/STORE-MVC/");//dominio de proyecto - valor
+define("base_url", "http://localhost/UDEMY/STORE-MVC/");//dominio de proyecto - valor
 
 
 //controlador por defecto

@@ -21,7 +21,7 @@
             </div>
         </header>
         <!-- MENU -->
-        <?php $categorias = Utils::showCategorias();?>s
+        <?php $categorias = Utils::showCategorias();?>
         <nav id="menu">
             <ul>
             <?php while($cats = $categorias->fetch_object()):?>

@@ -56,7 +56,11 @@ Class Categoria extends Database{
         return $result;
     }
 
+    public function getOne(){
+        $categorias = $this->db->query("SELECT * FROM categorias WHERE id = {$this->getId()}");
 
+        return $categorias->fetch_object();
+    }
 
 }
 

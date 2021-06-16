@@ -13,6 +13,18 @@ class ProductoController
         require_once 'VIEWS/PRODUCTO/destacados.php';
     }
 
+    public function ver(){
+        Utils::isAdmin();
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $producto = new Producto();
+            $producto->setId($id);
+            $getOneProduct = $producto->listarProducto();
+        }
+        require_once 'VIEWS/PRODUCTO/ver.php';
+    }
+
     public function gestion()
     {
         Utils::isAdmin();

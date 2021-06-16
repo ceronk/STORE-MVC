@@ -7,7 +7,9 @@ class ProductoController
 
     public function index()
     {
-
+        $productos = new Producto();
+        
+        $prdcts = $productos->getRandomProducts(6);
         require_once 'VIEWS/PRODUCTO/destacados.php';
     }
 

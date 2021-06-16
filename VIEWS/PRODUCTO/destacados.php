@@ -4,7 +4,7 @@
 
 
 <div class="product">
-
+ <a href="<?=base_url?>producto/ver&id=<?=$pro->id?>">
     <?php if(isset($pro->imagen) != null):?>
     <img src="<?=base_url?>/uploads/images/<?=$pro->imagen;?>" alt="">
     <?php else:?>
@@ -12,7 +12,8 @@
     <?php endif;?>
 
     <h2><?=$pro->nombre;?></h2>
-    <p><?=$pro->precio;?></p>
+    </a>
+    <p>$<?=$pro->precio;?></p>
     <a href="<?=base_url?>" class="button">Comprar</a>
 </div>
 

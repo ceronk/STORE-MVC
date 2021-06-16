@@ -16,7 +16,7 @@
             <div id="logo">
                 <img src="<?=base_url?>assets/img/logoTemp.png" alt="camiseta logo">
                 <a href="<?=base_url?>">
-                    <h1>Tienda de camisetas</h1>
+                    <h1>STORE MVC</h1>
                 </a>
             </div>
         </header>

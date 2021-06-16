@@ -29,4 +29,20 @@ Class Utils{
         $categorias = $categoria->listarCategorias();
         return $categorias;
     }
+
+    public static function statsCarrito(){
+        $stats = array(
+            'count' => 0,
+            'total' => 0
+        );
+        if (isset($_SESSION['carrito'])) {
+            $stats['count'] = count($_SESSION['carrito']);
+
+            foreach($_SESSION['carrito'] as $productCarrito){
+                $stats['total'] += $productCarrito['precio'] * $productCarrito['unidades'];
+            }
+        }
+
+        return $stats;
+    }
 }

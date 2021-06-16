@@ -128,9 +128,26 @@ class Producto extends Database
         return $producto->fetch_object();
     }
 
+    public function getRandomProducts($limit){
+        $productos = $this->db->query("SELECT * from productos ORDER BY RAND() LIMIT $limit");;
+
+        return $productos;
+    }
+
     public function getAll()
     {
         $productos = $this->db->query("SELECT * FROM productos ORDER BY id ASC");
+
+        return $productos;
+    }
+
+    
+    public function getAllCategory()
+    {
+        $sql = "SELECT p.*, c.nombre AS 'catNombre' FROM productos p
+        INNER JOIN categorias c ON c.id=p.id_categoria
+                WHERE p.id_categoria = {$this->getIdCategoria()}";
+        $productos = $this->db->query($sql);
 
         return $productos;
     }

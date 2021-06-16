@@ -13,7 +13,7 @@
         <div class="data">
             <p class="description"><?= $getOneProduct->descripcion; ?></p>
             <p class="price">$<?= $getOneProduct->precio; ?></p>
-            <a href="<?= base_url ?>" class="button">Comprar</a>
+            <a href="<?= base_url ?>carrito/add&id=<?=$getOneProduct->id;?>" class="button">Comprar</a>
         </div>
     </div>
 

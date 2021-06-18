@@ -8,6 +8,9 @@
         <th>Unidades</th>
         <th>Acciones</th>
     </tr>
+
+<?php if(isset($carritoObject)):?>
+
     <?php foreach ($carritoObject as $indice => $productItem) : ?>
         <?php $item = $productItem['producto']; //Extrayendo elementos de objeto con indice producto
         ?>
@@ -26,11 +29,13 @@
             <td><a href="">Eliminar</a></td>
         </tr>
     <?php endforeach; ?>
+    <?php endif;?>
 </table>
 <br>
+
 
 <div class="total-carrito">
     <?php $stats = Utils::statsCarrito(); ?>
     <h3>Precio Total: $<?= $stats['total']; ?></h3>
-    <a href="" class="button button-pedido">Hacer Pedido</a>
+    <a href="<?= base_url ?>pedido/finalizar" class="button button-pedido">Finalizar Pedido</a>
 </div>

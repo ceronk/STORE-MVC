@@ -102,4 +102,15 @@ class PedidoController
             header("Location:" . base_url . "pedido/mispedidos");
         }
     }
+    public function gestion(){
+        Utils::isAdmin();
+
+        $gestion = true;
+
+        $pedido = new Pedido();
+        $pedidosData = $pedido->getAll();
+
+
+        require_once 'VIEWS/PEDIDO/mispedidos.php';
+    }
 }

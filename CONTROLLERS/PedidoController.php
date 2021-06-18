@@ -102,7 +102,10 @@ class PedidoController
             header("Location:" . base_url . "pedido/mispedidos");
         }
     }
-    public function gestion(){
+
+
+    public function gestion()
+    {
         Utils::isAdmin();
 
         $gestion = true;
@@ -112,5 +115,25 @@ class PedidoController
 
 
         require_once 'VIEWS/PEDIDO/mispedidos.php';
+    }
+
+    public function estado()
+    {
+        Utils::isAdmin();
+
+        if (isset($_POST['idPedido']) && isset($_POST['estado'])) {
+
+            $id = $_POST['idPedido'];
+            $estado = $_POST['estado'];
+            //Update Pedido
+            $pedido = new Pedido();
+            $pedido->setId($id);
+            $pedido->setEstado($estado);
+            $pedido->updatePedido();
+
+            header("Location:" . base_url . "pedido/detalle&id={$id}");
+        } else {
+            header("Location:" . base_url);
+        }
     }
 }

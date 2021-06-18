@@ -128,7 +128,8 @@ class Producto extends Database
         return $producto->fetch_object();
     }
 
-    public function getRandomProducts($limit){
+    public function getRandomProducts($limit)
+    {
         $productos = $this->db->query("SELECT * from productos ORDER BY RAND() LIMIT $limit");;
 
         return $productos;
@@ -141,7 +142,7 @@ class Producto extends Database
         return $productos;
     }
 
-    
+
     public function getAllCategory()
     {
         $sql = "SELECT p.*, c.nombre AS 'catNombre' FROM productos p
@@ -155,15 +156,25 @@ class Producto extends Database
 
     public function save()
     {
+
+        $fileName = $this->getImagen();
+
+
         $sql = "INSERT INTO productos VALUES(null,
                                             '{$this->getNombre()}',
                                             '{$this->getDescripcion()}',
                                             {$this->getPrecio()},
                                             {$this->getStock()},
                                             null,
-                                            CURDATE(),
-                                            '{$this->getImagen()}',
-                                            {$this->getIdCategoria()})";
+                                            CURDATE()";
+
+        if ($fileName == null) {
+            $sql .= " , NULL";
+        } else {
+            $sql .= " , '{$fileName}'";
+        }
+        $sql .= " , {$this->getIdCategoria()})";
+
         $save = $this->db->query($sql);
 
         $result = false;
@@ -186,9 +197,9 @@ class Producto extends Database
         if ($this->getImagen() != null) {
             $sql .= ", imagen = '{$this->getImagen()}'";
         }
-                                        $sql .= " WHERE id = {$this->id}";  //kp2
+        $sql .= " WHERE id = {$this->id}";  //kp2
 
-      
+
         $delete = $this->db->query($sql);
 
         return $delete;

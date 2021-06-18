@@ -57,4 +57,20 @@ class Utils
 
         return $stats;
     }
+
+    public static function showStatus($status)
+    {
+        $value = 'pendiente';
+        if ($status == 'confirm') {
+            $value = 'Pendiente';
+        } elseif ($status == 'preparation') {
+            $value = 'En preparación';
+        } elseif ($status == 'ready') {
+            $value = 'Preparado para el enviar';
+        } elseif ($status == 'sended') {
+            $value = 'Enviado';
+        }
+
+        return $value;
+    }
 }

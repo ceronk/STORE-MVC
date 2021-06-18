@@ -14,8 +14,6 @@
         <th>Estado Pedido</th>
     </tr>
 
-    <?php //var_dump($pedidosData); die();?>
-
 <?php if(isset($pedidosData)):?>
 
     <?php while ($items = $pedidosData->fetch_object()) : ?>

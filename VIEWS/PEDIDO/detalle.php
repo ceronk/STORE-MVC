@@ -3,7 +3,7 @@
 
 <?php if (isset($finalPedido)) : ?>
 
-    <?php if ($_SESSION['admin']) : ?>
+    <?php if (isset($_SESSION['admin'])) : ?>
         <h3>Cambiar estado | Panel Administración</h3>
         <hr>
         <form action="<?= base_url ?>pedido/estado" method="post">

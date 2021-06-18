@@ -8,14 +8,13 @@ class ProductoController
     public function index()
     {
         $productos = new Producto();
-        
+
         $prdcts = $productos->getRandomProducts(6);
         require_once 'VIEWS/PRODUCTO/destacados.php';
     }
 
-    public function ver(){
-        Utils::isAdmin();
-
+    public function ver()
+    {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $producto = new Producto();
@@ -49,6 +48,10 @@ class ProductoController
             $precio = isset($_POST['precio']) ? $_POST['precio'] : false;
             $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
             $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : false;
+            //Manipulacion de imagen
+            $file = $_FILES['imagen'];                                //variable superglobal para archivos
+            $fileName = $file['name'] == null ? null : $file['name']; //recogiendo nombre archivo
+            $mimeType = $file['type'];                                // . . . tipo archivo
 
             if ($nombre && $descripcion && $precio && $stock && $categoria) {
                 $producto = new Producto();
@@ -59,11 +62,6 @@ class ProductoController
                 $producto->setIdCategoria($categoria);
 
                 if (isset($_FILES['imagen'])) {
-                    //Manipulacion de imagen
-                    $file = $_FILES['imagen']; //variable superglobal para archivos
-                    $fileName = $file['name']; //recogiendo nombre archivo
-                    $mimeType = $file['type']; // . . . tipo archivo
-
 
                     if ($mimeType == 'image/jpg' || $mimeType == 'image/jpeg' || $mimeType == 'image/png' || $mimeType == 'image/gif') {
 
@@ -100,6 +98,8 @@ class ProductoController
         header("Location:" . base_url . "producto/gestion");
     }
 
+
+
     public function editar()
     {
         Utils::isAdmin();
@@ -119,7 +119,6 @@ class ProductoController
     public function eliminar()
     {
         Utils::isAdmin();
-
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
 

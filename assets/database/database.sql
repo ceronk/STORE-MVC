@@ -62,6 +62,7 @@ create table lineasPedidos(
     id int(255) AUTO_INCREMENT not null,
     id_pedido int(255) not null,
     id_producto int(255) not null,
+    unidades int(255) not null,
 
     CONSTRAINT pk_pedidos PRIMARY  KEY (id),
     CONSTRAINT fk_linPedidos_pedido FOREIGN key (id_pedido) REFERENCES pedidos(id) on delete cascade on update cascade,

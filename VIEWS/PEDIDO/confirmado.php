@@ -14,11 +14,10 @@
     <strong>Titular cuenta: Felipe gatogris</strong>
     <hr>
     <br>
-
     <?php if (isset($finalPedido)) : ?>
-
-        <h3>Datos del pedido: </h3>
+        <h3>Datos del pedido</h3>
         <hr>
+        <p>Estado: <?= Utils::showStatus($_SESSION['pedido']); ?></p>
         <p> Numero de pedido: <?= $finalPedido->id; ?></p>
         <p>Total a Pagar: <?= $finalPedido->coste; ?></p>
         <br>

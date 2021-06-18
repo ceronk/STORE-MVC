@@ -7,6 +7,7 @@ class CarritoController
 
     public function index()
     {
+        
         $carritoObject = $_SESSION['carrito'];
 
         require_once 'VIEWS/CARRITO/ver.php';

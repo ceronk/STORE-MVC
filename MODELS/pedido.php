@@ -224,4 +224,14 @@ class Pedido extends Database
 
         return $prdct;
     }
+
+    public function updatePedido(){
+        $sql = "UPDATE pedidos SET estado = '{$this->getEstado()}'
+            WHERE id = {$this->getId()}";
+
+
+        $delete = $this->db->query($sql);
+
+        return $delete;
+    }
 }
